@@ -1,3 +1,4 @@
+from itertools import chain
 
 def add(x, y):
     return x + y
@@ -32,11 +33,11 @@ def digit_solver(target, nums):
                     new_number = operation(max_val, min_val)
                     if new_number == None:
                         break
-                    operation_string = str(max_val) + operation_to_text[operation] + str(min_val) + " = " + str(
-                        new_number) + ", "
+                    operation_string = f"{str(max_val)}{operation_to_text[operation]}{str(min_val)} = {str(new_number)}"
                     if new_number == target:
                         return (True, operation_string)
-                    new_array = [new_number] + remain[:i] + remain[i + 1:j] + remain[j + 1:]
+                    operation_string = f"{operation_string}, "
+                    new_array = list(chain([new_number], remain[:i], remain[i + 1: j], remain[j + 1:]))
                     res = helper(new_array)
                     if res[0]:
                         return (True, operation_string + res[1])
