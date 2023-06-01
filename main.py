@@ -32,7 +32,7 @@ def digit_solver(target, nums):
                 for operation in operation_to_text.keys():
                     new_number = operation(max_val, min_val)
                     if new_number == None:
-                        break
+                        continue
                     operation_string = f"{str(max_val)}{operation_to_text[operation]}{str(min_val)} = {str(new_number)}"
                     if new_number == target:
                         return (True, operation_string)
@@ -48,9 +48,42 @@ def digit_solver(target, nums):
         return "No Solution Found"
     return found_solution[1]
 
+
+def BFS_digit_solver(target, nums):
+    num_states = []
+    num_states.append(nums)
+    actions = []
+    actions.append("")
+
+    while num_states:
+        remain = num_states.pop(0)
+        steps_taken = actions.pop(0)
+        for i in range(len(remain) - 1):
+            for j in range(i + 1, len(remain)):
+                max_val = max(remain[i], remain[j])
+                min_val = min(remain[i], remain[j])
+                for operation in operation_to_text.keys():
+                    new_number = operation(max_val, min_val)
+                    if new_number == None:
+                        continue
+                    operation_string = f"{str(max_val)}{operation_to_text[operation]}{str(min_val)} = {str(new_number)}"
+                    calculations_so_far = f"{steps_taken}{operation_string}"
+                    if new_number == target:
+                        return calculations_so_far
+
+                    calculations_so_far = f"{calculations_so_far}, "
+                    new_array = list(chain([new_number], remain[:i], remain[i + 1: j], remain[j + 1:]))
+                    num_states.append(new_array)
+                    actions.append(calculations_so_far)
+    return "No Solution Found"
+
+
+
 def main():
-    print(digit_solver(341, [5, 7, 8, 9, 15, 20]))
+    print(digit_solver(1, [3, 3]))
     print(digit_solver(6, [3, 9]))
+
+    print(BFS_digit_solver(2, [3, 4, 4]))
 
 
 if __name__ == "__main__":
