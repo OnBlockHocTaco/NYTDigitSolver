@@ -88,7 +88,7 @@ def digit_solver(target, nums):
     return found_solution[1]
 
 
-def BFS_digit_solver(target, nums):
+def bfs_digit_solver(target, nums):
     """
     :param target: The Target Number We Are Trying to Reach
     :param nums: The List of Numbers We Use to Reach the Target
@@ -154,10 +154,11 @@ def number_input():
 
 
 def main():
-    target = target_integer_input()
-    inputs = number_input()
-    print(f"The Steps Required to Reach {target} Are:")
-    print(BFS_digit_solver(target, inputs))
+    #target = target_integer_input()
+    #inputs = number_input()
+    #print(f"The Steps Required to Reach {target}:")
+    #print(bfs_digit_solver(target, inputs))
+    print(bfs_digit_solver(73, [2,3,4,5,10,25]))
 
 
 if __name__ == "__main__":
