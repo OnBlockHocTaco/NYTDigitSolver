@@ -2,28 +2,32 @@
 {% block title %}Entry Page{% endblock %}
 {% block content %}
 <title>Application</title>
+
 <form action="#", method="post">
-    <p>Enter the Target Number:</p>
-    <p><input type="number" name="trgt" /></p>
+    <div>
+        <label for="target">Enter the Target Number</label>
+        <p><input type="number" id="target" name="trgt" /></p>
+    </div>
 
-    <p>Enter the First Number:</p>
-    <p><input type="number" name="first" /></p>
+    <div class="usable_numbers">
+        <label for="first">Enter the First Number</label>
+        <p><input type="number" id="first" name="first" /></p>
 
-    <p>Enter the Second Number:</p>
-    <p><input type="number" name="second" /></p>
+        <label for="second">Enter the Second Number</label>
+        <p><input type="number" id="second" name="second" /></p>
 
-    <p>Enter the Third Number:</p>
-    <p><input type="number" name="third" /></p>
+        <label for="third">Enter the Third Number</label>
+        <p><input type="number" id="third" name="third" /></p>
 
-    <p>Enter the Fourth Number:</p>
-    <p><input type="number" name="fourth" /></p>
+        <label for="fourth">Enter the Fourth Number</label>
+        <p><input type="number" id="fourth" name="fourth" /></p>
 
-    <p>Enter the Fifth Number:</p>
-    <p><input type="number" name="fifth" /></p>
+        <label for="fifth">Enter the Fifth Number</label>
+        <p><input type="number" id="fifth" name="fifth" /></p>
 
-    <p>Enter the Sixth Number:</p>
-    <p><input type="number" name="sixth" /></p>
-
-    <p><input type="submit" value="submit" /></p>
+        <label for="sixth">Enter the Sixth Number</label>
+        <p><input type="number" id="sixth" name="sixth" /></p>
+    </div>
+    <p><input type="submit" id="submission" value="Find Solution" /></p>
 </form>
 {% endblock %}

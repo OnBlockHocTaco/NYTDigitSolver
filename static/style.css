@@ -1,0 +1,9 @@
+input[type=number] {
+    padding: 10px;
+    margin: 10px 0;
+    width: 200px;
+}
+
+label[for="first"] {
+    color:red;
+}
