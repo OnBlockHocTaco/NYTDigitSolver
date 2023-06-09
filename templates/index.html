@@ -4,30 +4,42 @@
 <title>Application</title>
 
 <form action="#", method="post">
-    <div>
-        <label for="target">Enter the Target Number</label>
+    <div class="target_number">
+        <label for="target">Target Number</label>
         <p><input type="number" id="target" name="trgt" /></p>
     </div>
 
     <div class="usable_numbers">
-        <label for="first">Enter the First Number</label>
-        <p><input type="number" id="first" name="first" /></p>
+        <div class="usable_number">
+            <label for="first" class="usable_label">First Number</label>
+            <p><input type="number" class="usable_input" id="first" name="first" /></p>
+        </div>
+        <div class="usable_number">
+            <label for="second" class="usable_label">Second Number</label>
+            <p><input type="number" class="usable_input" id="second" name="second" /></p>
+        </div>
+        <div class="usable_number">
+            <label for="third" class="usable_label">Third Number</label>
+            <p><input type="number" class="usable_input" id="third" name="third" /></p>
+        </div>
 
-        <label for="second">Enter the Second Number</label>
-        <p><input type="number" id="second" name="second" /></p>
+        <div class="usable_number">
+            <label for="fourth" class="usable_label">Fourth Number</label>
+            <p><input type="number" class="usable_input" id="fourth" name="fourth" /></p>
+        </div>
 
-        <label for="third">Enter the Third Number</label>
-        <p><input type="number" id="third" name="third" /></p>
+        <div class="usable_number">
+            <label for="fifth" class="usable_label">Fifth Number</label>
+            <p><input type="number" class="usable_input" id="fifth" name="fifth" /></p>
+        </div>
 
-        <label for="fourth">Enter the Fourth Number</label>
-        <p><input type="number" id="fourth" name="fourth" /></p>
-
-        <label for="fifth">Enter the Fifth Number</label>
-        <p><input type="number" id="fifth" name="fifth" /></p>
-
-        <label for="sixth">Enter the Sixth Number</label>
-        <p><input type="number" id="sixth" name="sixth" /></p>
+        <div class="usable_number">
+            <label for="sixth" class="usable_label">Sixth Number</label>
+            <p><input type="number" class="usable_input" id="sixth" name="sixth" /></p>
+        </div>
     </div>
-    <p><input type="submit" id="submission" value="Find Solution" /></p>
+    <div class="submit_button">
+        <p><input type="submit" id="submission" value="Find Solution" /></p>
+    </div>
 </form>
 {% endblock %}

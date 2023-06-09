@@ -1,9 +1,78 @@
-input[type=number] {
-    padding: 10px;
-    margin: 10px 0;
-    width: 200px;
+
+body {
+   margin: 20px 20px 20px 20px;
+   background-color: #3D4C5F;
+   background-size: 400% 400%;
+   color: #FAF9F6;
 }
 
-label[for="first"] {
-    color:red;
+.usable_numbers {
+	width: 67%;
+	margin:50px auto;
+
+	display: grid;
+	grid-template-rows: 120px 170px;
+	grid-template-columns: 14% 14% 14%;
+
+	grid-gap: 18%;
+
+    justify-content: center;
+
 }
+
+input {
+    height: 100px;
+    width: 100px;
+    border-radius: 100px;
+    text-align: center;
+}
+
+#target {
+    height: 150px;
+    width: 150px;
+    border-radius: 150px;
+    text-align: center;
+}
+
+input::-webkit-inner-spin-button {
+    display: none;
+}
+
+.usable_number {
+    display: block;
+    text-align: center;
+    line-height: 100%;
+    font-size: 20px;
+}
+
+.target_number {
+    display: block;
+    text-align: center;
+    line-height: 100%;
+    font-size: 35px;
+}
+
+#target {
+    font-size: 40px;
+}
+
+.submit_button {
+    display: block;
+    text-align: center;
+}
+
+.usable_input {
+    font-size: 30px;
+}
+
+#submission {
+    height: 80px;
+    width: 250px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 40px;
+    margin-top: 45px;
+}
+
+
+

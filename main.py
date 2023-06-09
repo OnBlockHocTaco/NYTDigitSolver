@@ -1,5 +1,6 @@
 from itertools import chain
 
+FAILURE = "No Solution Found"
 
 def add(x, y):
     """
@@ -70,22 +71,48 @@ def digit_solver(target, nums):
                 min_val = min(remain[i], remain[j]) #Ensure Subtraction and Division See Larger Number First
                 for operation in operation_to_text.keys():
                     new_number = operation(max_val, min_val)
-                    if new_number == None:
+                    if new_number is None:
                         continue #Move to the Next Operation if Subtraction or Division Failed
                     operation_string = f"{str(max_val)}{operation_to_text[operation]}{str(min_val)} = {str(new_number)}"
                     if new_number == target:
-                        return (True, operation_string)
+                        return True, operation_string
                     operation_string = f"{operation_string}, "
                     new_array = list(chain([new_number], remain[:i], remain[i + 1: j], remain[j + 1:]))
                     res = helper(new_array) #Search on the List Including the Newly Made Number
                     if res[0]:
-                        return (True, operation_string + res[1])
-        return (False, "")
+                        return True, operation_string + res[1]
+        return False, ""
 
     found_solution = helper(nums)
     if not found_solution[0]:
-        return "No Solution Found"
+        return FAILURE
     return found_solution[1]
+
+# #Variation to digit_solver that is used to verify the existance of a solution in significantly faster time than BFS
+# #BFS I
+# def digit_helper(target, nums):
+#     if target in nums:
+#         return True
+#
+#     def helper(remain):
+#         for i in range(len(remain) - 1):
+#             for j in range(i + 1, len(remain)):
+#                 max_val = max(remain[i], remain[j])
+#                 min_val = min(remain[i], remain[j]) #Ensure Subtraction and Division See Larger Number First
+#                 for operation in operation_to_text.keys():
+#                     new_number = operation(max_val, min_val)
+#                     if new_number == None:
+#                         continue #Move to the Next Operation if Subtraction or Division Failed
+#                     if new_number == target:
+#                         return True
+#                     new_array = list(chain([new_number], remain[:i], remain[i + 1: j], remain[j + 1:]))
+#                     res = helper(new_array) #Search on the List Including the Newly Made Number
+#                     if res:
+#                         return True
+#         return False
+#
+#     return helper(nums)
+#
 
 
 def bfs_digit_solver(target, nums):
@@ -94,6 +121,11 @@ def bfs_digit_solver(target, nums):
     :param nums: The List of Numbers We Use to Reach the Target
     :return: A String of Steps to Reach the Target. Done so in a BFS Manner to Ensure Shortest Number of Steps.
     """
+
+    sol_found = digit_solver(target, nums)
+    if sol_found == FAILURE:
+        return FAILURE
+
     if target in nums:
         return f"Select {target}"
 
@@ -105,13 +137,15 @@ def bfs_digit_solver(target, nums):
     while num_states:
         remain = num_states.pop(0) #Remove the First Pair of Actions and Steps Taken From Respective Queues
         steps_taken = actions.pop(0)
+        if len(remain) == 2:
+            return sol_found
         for i in range(len(remain) - 1):
             for j in range(i + 1, len(remain)):
                 max_val = max(remain[i], remain[j])
                 min_val = min(remain[i], remain[j]) #Ensure Subtraction and Division See Larger Number First
                 for operation in operation_to_text.keys():
                     new_number = operation(max_val, min_val)
-                    if new_number == None:
+                    if new_number is None:
                         continue #Move to the Next Operation if Subtraction or Division Failed
                     operation_string = f"{str(max_val)}{operation_to_text[operation]}{str(min_val)} = {str(new_number)}"
                     calculations_so_far = f"{steps_taken}{operation_string}"
@@ -121,7 +155,7 @@ def bfs_digit_solver(target, nums):
                     new_array = list(chain([new_number], remain[:i], remain[i + 1: j], remain[j + 1:]))
                     num_states.append(new_array) #Add to the Back of the Queue of Lists
                     actions.append(calculations_so_far) #Add to the Back of the Queue of Steps Taken
-    return "No Solution Found"
+    return FAILURE
 
 
 def target_integer_input():
@@ -154,11 +188,19 @@ def number_input():
 
 
 def main():
+    a = False
     #target = target_integer_input()
     #inputs = number_input()
     #print(f"The Steps Required to Reach {target}:")
     #print(bfs_digit_solver(target, inputs))
-    print(bfs_digit_solver(73, [2,3,4,5,10,25]))
+    #print(digit_helper(, [1,2,4,5]))
+    #print(digit_helper(33, [234,411,1251,131,311,1125]))
+    #print(digit_solver(33, [234,411,1251,131,311,1125]))
+    #print(bfs_digit_solver(33, [234,411,1251,131,311,1125]))
+
+
+    # 98ACB5
+    # 3D4C5F
 
 
 if __name__ == "__main__":

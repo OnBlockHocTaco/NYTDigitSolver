@@ -19,7 +19,6 @@ def insert():
     else:
         return render_template("index.html")
 
-
 @app.route("/result")
 def result():
     if "trgt" in session and "usable_numbers" in session: #Verify that a set of numbers exists
@@ -28,7 +27,6 @@ def result():
         return render_template("result.html", target=trgt, steps=solution)
     else:
         return redirect(url_for("insert"))
-
 
 if __name__ == "__main__":
     app.run(debug=True, port=3000)
