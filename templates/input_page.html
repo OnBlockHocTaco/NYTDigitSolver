@@ -1,7 +1,6 @@
 {% extends "base.html" %}
-{% block title %}Entry Page{% endblock %}
+{% block title %}Application{% endblock %}
 {% block content %}
-<title>Application</title>
 
 <form action="#", method="post">
     <div class="target_number">
@@ -12,34 +11,34 @@
     <div class="usable_numbers">
         <div class="usable_number">
             <label for="first" class="usable_label">First Number</label>
-            <p><input type="number" class="usable_input" id="first" name="first" /></p>
+            <p><input type="number" class="usable_input" id="first" name="first" required /></p>
         </div>
         <div class="usable_number">
             <label for="second" class="usable_label">Second Number</label>
-            <p><input type="number" class="usable_input" id="second" name="second" /></p>
+            <p><input type="number" class="usable_input" id="second" name="second" required /></p>
         </div>
         <div class="usable_number">
             <label for="third" class="usable_label">Third Number</label>
-            <p><input type="number" class="usable_input" id="third" name="third" /></p>
+            <p><input type="number" class="usable_input" id="third" name="third" required /></p>
         </div>
 
         <div class="usable_number">
             <label for="fourth" class="usable_label">Fourth Number</label>
-            <p><input type="number" class="usable_input" id="fourth" name="fourth" /></p>
+            <p><input type="number" class="usable_input" id="fourth" name="fourth" required /></p>
         </div>
 
         <div class="usable_number">
             <label for="fifth" class="usable_label">Fifth Number</label>
-            <p><input type="number" class="usable_input" id="fifth" name="fifth" /></p>
+            <p><input type="number" class="usable_input" id="fifth" name="fifth" required /></p>
         </div>
 
         <div class="usable_number">
             <label for="sixth" class="usable_label">Sixth Number</label>
-            <p><input type="number" class="usable_input" id="sixth" name="sixth" /></p>
+            <p><input type="number" class="usable_input" id="sixth" name="sixth" required /></p>
         </div>
     </div>
     <div class="submit_button">
-        <p><input type="submit" id="submission" value="Find Solution" /></p>
+        <p><input type="submit" id="submission" value="Solve" /></p>
     </div>
 </form>
 {% endblock %}

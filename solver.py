@@ -15,15 +15,13 @@ def subtract(x, y):
     :param x: The First Operand
     :param y: The Second Operand
     :return: The Integer Subtraction of X and Y with some caviets, NYT does not allow for negative numbers
-    so subtractions that would result in a negative number are not allowed. While NYT DOES permit subtractions
-    such that x-y=0, creating a 0 value can never be an optimal step. Addition, Subtraction, and Multiplication
-    by 0 is equivalent to starting with that number. And Division with 0 either results in 0 or cannot be allowed
+    so subtractions that would result in a negative number are not allowed.
     """
     #NYT Lets you subtract numbers such that x - y = 0; however, creating a 0 value can never be an optimal step
     #In addition and subtracting, using a 0 is equivalent to just starting with that number
     #In multiplication and division, using a 0 is either not possible or is equivalent to starting with that number
     #NYT does not let you subtract so as to create a negative number
-    if x - y <= 0:
+    if x - y < 0:
         return None
     return x - y
 
@@ -69,6 +67,8 @@ def digit_solver(target, nums):
             for j in range(i + 1, len(remain)):
                 max_val = max(remain[i], remain[j])
                 min_val = min(remain[i], remain[j]) #Ensure Subtraction and Division See Larger Number First
+                if remain[i] == 0 or remain[j] == 0:
+                    continue
                 for operation in operation_to_text.keys():
                     new_number = operation(max_val, min_val)
                     if new_number is None:
@@ -143,6 +143,8 @@ def bfs_digit_solver(target, nums):
             for j in range(i + 1, len(remain)):
                 max_val = max(remain[i], remain[j])
                 min_val = min(remain[i], remain[j]) #Ensure Subtraction and Division See Larger Number First
+                if remain[i] == 0 or remain[j] == 0:
+                    continue
                 for operation in operation_to_text.keys():
                     new_number = operation(max_val, min_val)
                     if new_number is None:
@@ -198,9 +200,6 @@ def main():
     #print(digit_solver(33, [234,411,1251,131,311,1125]))
     #print(bfs_digit_solver(33, [234,411,1251,131,311,1125]))
 
-
-    # 98ACB5
-    # 3D4C5F
 
 
 if __name__ == "__main__":

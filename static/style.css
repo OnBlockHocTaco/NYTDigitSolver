@@ -9,15 +9,11 @@ body {
 .usable_numbers {
 	width: 67%;
 	margin:50px auto;
-
 	display: grid;
 	grid-template-rows: 120px 170px;
 	grid-template-columns: 14% 14% 14%;
-
 	grid-gap: 18%;
-
     justify-content: center;
-
 }
 
 input {
@@ -32,6 +28,7 @@ input {
     width: 150px;
     border-radius: 150px;
     text-align: center;
+    border: 2px solid black;
 }
 
 input::-webkit-inner-spin-button {
@@ -63,16 +60,26 @@ input::-webkit-inner-spin-button {
 
 .usable_input {
     font-size: 30px;
+    border: 2px solid black;
+}
+
+.usable_input:focus {
+    outline-color: black;
+
 }
 
 #submission {
-    height: 80px;
-    width: 250px;
+    height: 70px;
+    width: 170px;
     text-align: center;
     border-radius: 10px;
     font-size: 40px;
     margin-top: 45px;
+    font-family: 'Orator Std', Helvetica;
+    border: 2px solid gray;
 }
 
-
+/*
+THE ABOVE IS FOR THE BASE PAGE
+ */
 
