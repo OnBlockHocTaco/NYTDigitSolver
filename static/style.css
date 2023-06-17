@@ -31,6 +31,11 @@ input {
     border: 2px solid black;
 }
 
+#target:focus {
+    outline-color: black;
+}
+
+
 input::-webkit-inner-spin-button {
     display: none;
 }
@@ -65,7 +70,6 @@ input::-webkit-inner-spin-button {
 
 .usable_input:focus {
     outline-color: black;
-
 }
 
 #submission {
