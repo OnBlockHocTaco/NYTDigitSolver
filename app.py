@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, request, session
-from solver import bfs_digit_solver
+from solver import bfs_digit_solver, bfs_digit_solver_steps
 
 app = Flask(__name__)
 app.secret_key = "BBBBBBBBB"
@@ -28,8 +28,9 @@ def insert():
 def result():
     if "trgt" in session and "usable_numbers" in session: #Verify that a set of numbers exists
         trgt = session["trgt"]
-        solution = bfs_digit_solver(trgt, session["usable_numbers"])
-        return render_template("result.html", target=trgt, steps=solution)
+        #solution = bfs_digit_solver(trgt, session["usable_numbers"])
+        solution = bfs_digit_solver_steps(trgt, session["usable_numbers"])
+        return render_template("result.html", target=trgt, steps=solution, length = len(solution))
     else:
         return redirect(url_for("insert"))
 

@@ -1,4 +1,5 @@
 from itertools import chain
+from collections import deque
 
 FAILURE = "No Solution Found"
 
@@ -159,6 +160,53 @@ def bfs_digit_solver(target, nums):
                     actions.append(calculations_so_far) #Add to the Back of the Queue of Steps Taken
     return FAILURE
 
+def bfs_digit_solver_steps(target, nums):
+    sol_found = digit_solver(target, nums)
+    if sol_found == FAILURE:
+        return FAILURE
+
+    """
+    FIND SOME SMART WAY TO SIGNIFY THAT THE NUMBER EXISTS AND YOU SHOULD JUST CLICK ON IT
+    IN THE CASE THAT TARGET IS IN NUMS
+    """
+    num_states = deque()
+    num_states.append(nums)
+    actions = deque()
+    actions.append([])
+
+    while num_states:
+        remain = num_states.popleft()
+        steps_taken = actions.popleft()
+        # if not actions:
+        #     steps_taken = []
+        # else:
+        #     steps_taken = actions.popleft()
+
+        for i in range(len(remain) - 1):
+            for j in range(i + 1, len(remain)):
+                max_val = max(remain[i], remain[j])
+                min_val = min(remain[i], remain[j])
+                if remain[i] == 0 or remain[j] == 0:
+                    continue
+                for operation in operation_to_text:
+                    new_number = operation(max_val, min_val)
+                    if new_number is None:
+                        continue
+                    action = [str(max_val), operation_to_text[operation], str(min_val), "=", str(new_number)]
+                    this_steps = steps_taken.copy()
+                    this_steps.append(action)
+                    if new_number == target:
+                        return this_steps
+                    new_array = list(chain([new_number], remain[:i], remain[i + 1: j], remain[j + 1:]))
+                    num_states.append(new_array)  # Add to the Back of the Queue of Lists
+                    actions.append(this_steps)  # Add to the Back of the Queue of Steps Taken
+
+
+
+    return FAILURE
+
+
+
 
 def target_integer_input():
     """
@@ -195,10 +243,8 @@ def main():
     #inputs = number_input()
     #print(f"The Steps Required to Reach {target}:")
     #print(bfs_digit_solver(target, inputs))
-    #print(digit_helper(, [1,2,4,5]))
-    #print(digit_helper(33, [234,411,1251,131,311,1125]))
-    #print(digit_solver(33, [234,411,1251,131,311,1125]))
-    #print(bfs_digit_solver(33, [234,411,1251,131,311,1125]))
+    print(bfs_digit_solver_steps(9, [1,2,4,5]))
+    print(bfs_digit_solver_steps(33, [234,411,1251,131,311,1125]))
 
 
 

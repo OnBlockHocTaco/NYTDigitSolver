@@ -87,3 +87,35 @@ input::-webkit-inner-spin-button {
 THE ABOVE IS FOR THE BASE PAGE
  */
 
+.result_number {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  text-align: center;
+  font-size: 30px;
+}
+
+.overall_steps {
+    display: block;
+}
+.step0 {
+  display: inline-block;
+}
+
+.step1 {
+  display: inline-block;
+}
+
+.step2 {
+  display: inline-block;
+}
+
+.step3 {
+  display: inline-block;
+}
+
+
+
+
+
+

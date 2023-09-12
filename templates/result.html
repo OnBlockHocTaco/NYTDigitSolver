@@ -1,6 +1,18 @@
 {% extends "base.html" %}
-{% block title %}Result{% endblock %}
+{% block title %}Solution{% endblock %}
 {% block content %}
-<h1>In Order To Reach {{target}}</h1>
-<h2>{{steps}}</h2>
+<div class="result_number">
+    <h1>In Order To Reach {{target}}</h1>
+</div>
+<div class="overall_steps">
+    {% for i in range(0, length) %}
+        {% for j in range(0, 5) %}
+            <div class="step{{i}}">
+                <p> {{ steps[i][j] }} <p>
+            </div>
+        {% endfor %}
+    {% endfor %}
+</div>
+
+
 {% endblock %}}
