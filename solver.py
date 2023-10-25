@@ -26,6 +26,17 @@ def subtract(x, y):
         return None
     return x - y
 
+def subtract_optimal(x, y):
+    """
+    :param x: The First Operand
+    :param y: The Second Operand
+    :return: The Integer Subtraction of X and Y. NYT does not allow for negative numbers, for the optimal solver,
+    we will also not allow for 0 as finding a zero would be an inefficient solution and would add a unneeded step.
+    """
+    if x - y <= 0:
+        return None
+    return x - y
+
 def multiply(x, y):
     """
     :param x: The First Operand
